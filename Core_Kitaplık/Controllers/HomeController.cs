@@ -1,32 +1,21 @@
+﻿using Microsoft.AspNetCore.Mvc;
 using Core_Kitaplık.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace Core_Kitaplık.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var ktp = new List<Kitap>()
+            {
+                new Kitap(){Id=1,KitapAd="Satranç",Yazar="Zweig"},
+                new Kitap(){Id=2,KitapAd="Dr Ox'un Deneyi",Yazar="Jules Verne" },
+                new Kitap(){Id=3,KitapAd="Deli Fişek",Yazar="Vascenceulos" },
+                new Kitap(){Id=4, KitapAd="Kırmızı Bisiklet",Yazar="Muzaffer izgü" },
+                new Kitap(){Id=5, KitapAd="Toros Canavari",Yazar="Aziz Nesin" }
+            };
+            return View(ktp);
         }
     }
 }
